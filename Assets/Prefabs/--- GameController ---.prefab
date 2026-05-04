@@ -1,0 +1,461 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1506868078563580347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3636365001451699355}
+  - component: {fileID: 451189052054931199}
+  - component: {fileID: 4465791153520545836}
+  - component: {fileID: 1198915729586524498}
+  - component: {fileID: 7120346601451699355}
+  - component: {fileID: 8120346601451699355}
+  m_Layer: 0
+  m_Name: --- SessionDirector ---
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3636365001451699355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506868078563580347}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451189052054931199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506868078563580347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da1bfa5c35b4ba2af1b49a33512f4c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runIntro: 1
+  developerMode: 0
+  SessionConfig: {fileID: 11400000, guid: 0732e258a1b7423ab1b057831d643502, type: 2}
+--- !u!114 &4465791153520545836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506868078563580347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9cf708c20b44838bbff9a3e293c8df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveDuration: 60
+  currentWaveIndex: 0
+  waveTransitionTime: 5
+  waves:
+  - name: 1
+    segments:
+    - timeWindow: {x: 0, y: 10}
+      spawnFrequency: 1
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    - timeWindow: {x: 11, y: 100}
+      spawnFrequency: 0.3
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Gateway, Assembly-CSharp
+          m_MethodName: OpenGate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 2
+    segments:
+    - timeWindow: {x: 0, y: 15}
+      spawnFrequency: 1
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    - timeWindow: {x: 15, y: 100}
+      spawnFrequency: 0.4
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 451189052054931199}
+          m_TargetAssemblyTypeName: SessionDirector, Assembly-CSharp
+          m_MethodName: RevealLoadoutSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: HudRoot, Assembly-CSharp
+          m_MethodName: SpawnHintFromEvent
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Weapon1
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 3
+    segments:
+    - timeWindow: {x: 0, y: 15}
+      spawnFrequency: 1
+      prefab: {fileID: 6221457167098877723, guid: ca89b2186006ff34086ce7155d3528d4, type: 3}
+    - timeWindow: {x: 15, y: 100}
+      spawnFrequency: 0.4
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: 4
+    segments:
+    - timeWindow: {x: 0, y: 15}
+      spawnFrequency: 1.4
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    - timeWindow: {x: 15, y: 100}
+      spawnFrequency: 0.3
+      prefab: {fileID: 6221457167098877723, guid: ca89b2186006ff34086ce7155d3528d4, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Gateway, Assembly-CSharp
+          m_MethodName: OpenGate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 5
+    segments:
+    - timeWindow: {x: 0, y: 7}
+      spawnFrequency: 2.9
+      prefab: {fileID: 6221457167098877723, guid: ca89b2186006ff34086ce7155d3528d4, type: 3}
+    - timeWindow: {x: 15, y: 100}
+      spawnFrequency: 0.6
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 451189052054931199}
+          m_TargetAssemblyTypeName: SessionDirector, Assembly-CSharp
+          m_MethodName: RevealLoadoutSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: HudRoot, Assembly-CSharp
+          m_MethodName: SpawnHintFromEvent
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Weapon2
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 6
+    segments:
+    - timeWindow: {x: 0, y: 4}
+      spawnFrequency: 0.9
+      prefab: {fileID: 6221457167098877723, guid: 0b31f16429a17174e96b19150abbfa4d, type: 3}
+    - timeWindow: {x: 5, y: 51}
+      spawnFrequency: 0.4
+      prefab: {fileID: 6221457167098877723, guid: ca89b2186006ff34086ce7155d3528d4, type: 3}
+    - timeWindow: {x: 51, y: 100}
+      spawnFrequency: 0.6
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: 7
+    segments:
+    - timeWindow: {x: 0, y: 14}
+      spawnFrequency: 1.9
+      prefab: {fileID: 6221457167098877723, guid: 0b31f16429a17174e96b19150abbfa4d, type: 3}
+    - timeWindow: {x: 15, y: 51}
+      spawnFrequency: 0.7
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    - timeWindow: {x: 51, y: 100}
+      spawnFrequency: 0.6
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 451189052054931199}
+          m_TargetAssemblyTypeName: SessionDirector, Assembly-CSharp
+          m_MethodName: RevealLoadoutSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: HudRoot, Assembly-CSharp
+          m_MethodName: SpawnHintFromEvent
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Weapon3
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 8
+    segments:
+    - timeWindow: {x: 0, y: 10}
+      spawnFrequency: 1.9
+      prefab: {fileID: 6221457167098877723, guid: ca89b2186006ff34086ce7155d3528d4, type: 3}
+    - timeWindow: {x: 15, y: 51}
+      spawnFrequency: 0.7
+      prefab: {fileID: 6221457167098877723, guid: 0b31f16429a17174e96b19150abbfa4d, type: 3}
+    - timeWindow: {x: 51, y: 100}
+      spawnFrequency: 0.9
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Gateway, Assembly-CSharp
+          m_MethodName: OpenGate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 9
+    segments:
+    - timeWindow: {x: 0, y: 10}
+      spawnFrequency: 2.8
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    - timeWindow: {x: 15, y: 51}
+      spawnFrequency: 0.8
+      prefab: {fileID: 6221457167098877723, guid: ca89b2186006ff34086ce7155d3528d4, type: 3}
+    - timeWindow: {x: 51, y: 100}
+      spawnFrequency: 0.5
+      prefab: {fileID: 6221457167098877723, guid: 0b31f16429a17174e96b19150abbfa4d, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: 10
+    segments:
+    - timeWindow: {x: 0, y: 23}
+      spawnFrequency: 0.9
+      prefab: {fileID: 6221457167098877723, guid: 0cb088aaf8b906d4fb763d25d69b6e7e, type: 3}
+    - timeWindow: {x: 24, y: 51}
+      spawnFrequency: 0.9
+      prefab: {fileID: 6221457167098877723, guid: ca89b2186006ff34086ce7155d3528d4, type: 3}
+    - timeWindow: {x: 52, y: 100}
+      spawnFrequency: 0.9
+      prefab: {fileID: 6221457167098877723, guid: 0b31f16429a17174e96b19150abbfa4d, type: 3}
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Gateway, Assembly-CSharp
+          m_MethodName: OpenGate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: HudRoot, Assembly-CSharp
+          m_MethodName: SetEscapeLabel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!82 &1198915729586524498
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506868078563580347}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &7120346601451699355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506868078563580347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8aee884d5d49cca12b2a4295fb9367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8120346601451699355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506868078563580347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c321497ed9a547fcbee4fe3ae2181725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  developerMode: 0
