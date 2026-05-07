@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
 
 public class ThrowableLauncher : MonoBehaviour
@@ -9,7 +10,7 @@ public class ThrowableLauncher : MonoBehaviour
     public GameObject throwablePrefab;
     [SerializeField] private Sprite reticle;
     [SerializeField] private string animationState;
-    [SerializeField] private string[] cueNames;
+    [SerializeField] private string[] PlayCueFileNames;
 
     [Header("SessionConfig")]
     public bool unlimitedThrows;
@@ -42,7 +43,7 @@ public class ThrowableLauncher : MonoBehaviour
         if (remainingThrows <= 0 && !unlimitedThrows) return;
         if (animationState != string.Empty) animator.Play(animationState, 1);
         readyToLaunch = false;
-        SessionDirector.Instance.PlayCue(cueNames[Random.Range(0, cueNames.Length)]);
+        SessionDirector.Instance.PlayCue(PlayCueFileNames[Random.Range(0, PlayCueFileNames.Length)]);
         GameObject projectile = Instantiate(throwablePrefab, releasePoint.position, cameraTransform.rotation);
         Rigidbody projectileBody = projectile.GetComponent<Rigidbody>();
         Vector3 forceDirection = cameraTransform.forward;

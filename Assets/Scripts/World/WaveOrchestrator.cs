@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class WaveOrchestrator : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class WaveOrchestrator : MonoBehaviour
 
     [Header("Waves")]
     [SerializeField] private Wave[] waves;
-    [SerializeField] private List<GameObject> spawnPoints = new();
+    [SerializeField] private List<GameObject> spawnPosList = new();
     private List<float> localCounters = new();
 
     private void Start()
@@ -88,10 +89,10 @@ public class WaveOrchestrator : MonoBehaviour
 
     private Transform PickSpawnPoint()
     {
-        GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+        GameObject spawnPoint = spawnPosList[Random.Range(0, spawnPosList.Count)];
         if (!spawnPoint.activeSelf)
         {
-            while (!spawnPoint.activeSelf) spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+            while (!spawnPoint.activeSelf) spawnPoint = spawnPosList[Random.Range(0, spawnPosList.Count)];
         }
 
         return spawnPoint.transform;

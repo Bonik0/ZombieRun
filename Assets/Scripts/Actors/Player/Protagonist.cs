@@ -20,8 +20,8 @@ public class Protagonist : Combatant
 
     private void Update()
     {
-        recoveryTimer = Mathf.Clamp(recoveryTimer + Time.deltaTime, 0, config.recoveryDelay);
-        if (recoveryTimer >= config.recoveryDelay) Mend(config.recoveryRate * Time.deltaTime);
+        recoveryTimer = Mathf.Clamp(recoveryTimer + Time.deltaTime, 0, config.timeUntilMend);
+        if (recoveryTimer >= config.timeUntilMend) Mend(config.playerMendRate * Time.deltaTime);
     }
 
     protected override void OnReset()

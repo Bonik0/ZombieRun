@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,8 +14,8 @@ public class SessionDirector : MonoBehaviour
     private int activeStalkerCount;
 
     [Header("References")]
-    public SessionConfig config;
-    public SessionConfig Config => config;
+    public SessionConfig SessionConfig;
+    public SessionConfig Config => SessionConfig;
     private AudioBus audioBus;
 
     private void Awake()
@@ -25,7 +26,7 @@ public class SessionDirector : MonoBehaviour
     private void Start()
     {
         ApplyFrameSessionConfig();
-        if (config == null)
+        if (SessionConfig == null)
         {
             Debug.Break();
             Debug.LogError("NO CONFIG ASSIGNED!");
@@ -49,7 +50,7 @@ public class SessionDirector : MonoBehaviour
 
     public bool ReserveStalkerSlot()
     {
-        if (activeStalkerCount >= config.maxHostileCount) return false;
+        if (activeStalkerCount >= SessionConfig.maxStalkerCount) return false;
 
         activeStalkerCount++;
         return true;
@@ -72,8 +73,8 @@ public class SessionDirector : MonoBehaviour
 
     private void Update()
     {
-        if (Application.targetFrameRate != config.targetFrameRate)
-            Application.targetFrameRate = config.targetFrameRate;
+        if (Application.targetFrameRate != SessionConfig.targetFrameRate)
+            Application.targetFrameRate = SessionConfig.targetFrameRate;
     }
 
     private void Reset()

@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
 
 public class ViewController : MonoBehaviour
 {
     public float mouseScale = 1;
-    [SerializeField] private Transform pivot;
+    [SerializeField] private Transform player;
     private float pitch;
     private InputAction lookAction;
 
@@ -27,7 +28,7 @@ public class ViewController : MonoBehaviour
         pitch -= input.y;
         pitch = Mathf.Clamp(pitch, -90f, 90f);
         transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
-        pivot.Rotate(Vector3.up * input.x);
+        player.Rotate(Vector3.up * input.x);
     }
 
     private void OnDestroy()

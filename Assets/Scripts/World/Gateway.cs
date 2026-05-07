@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Gateway : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class Gateway : MonoBehaviour
     public GateState initialState;
     public GameObject openVisual;
     public GameObject closedVisual;
-    public List<GameObject> spawnPoints = new List<GameObject>();
+    public List<GameObject> spawnPosList = new List<GameObject>();
 
     private void Start()
     {
@@ -28,9 +29,9 @@ public class Gateway : MonoBehaviour
     {
         openVisual.SetActive(true);
         closedVisual.SetActive(false);
-        for (int i = 0; i < spawnPoints.Count; i++)
+        for (int i = 0; i < spawnPosList.Count; i++)
         {
-            GameObject spawnPoint = spawnPoints[i];
+            GameObject spawnPoint = spawnPosList[i];
             spawnPoint.SetActive(true);
         }
         SessionDirector.Instance.PlayCue("door-open");
